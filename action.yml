@@ -14,7 +14,7 @@ inputs:
 
   php_extensions:
     description: Space separated list of extensions to configure with the PHP build
-    default: xdebug phpdb pcov
+    default: xdebug pcov
     required: false
 
   vendored_phpunit_path:

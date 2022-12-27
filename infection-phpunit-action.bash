@@ -24,7 +24,6 @@ chmod +x $phpunit_phar_path
 chmod +x $infection_phar_path
 
 command_string=("infection")
-command_string+=(--threads=4)
 
 echo "Command: ${command_string[@]}" >> output.log 2>&1
 
