@@ -1,5 +1,5 @@
-name: PHPUnit (php-actions)
-description: Run your PHPUnit tests in your Github Actions.
+name: Infection on PHPUnit (php-actions)
+description: Run your Infection on PHPUnit tests in your Github Actions.
 
 inputs:
   version:
@@ -14,6 +14,7 @@ inputs:
 
   php_extensions:
     description: Space separated list of extensions to configure with the PHP build
+    default: xdebug pcov
     required: false
 
   vendored_phpunit_path:
@@ -104,11 +105,11 @@ runs:
         ACTION_WHITELIST: ${{ inputs.whitelist }}
         ACTION_MEMORY_LIMIT: ${{ inputs.memory_limit }}
         ACTION_ARGS: ${{ inputs.args }}
-      id: phpunit_run
+      id: infection-phpunit_run
       run: |
         set -e
-        bash <(curl -s https://raw.githubusercontent.com/php-actions/php-build/cee5b9fa9fbc4c888e7a62bbb7b8eade18e3c56b/php-build.bash) phpunit
-        ${{ github.action_path }}/phpunit-action.bash
+        bash <(curl -s https://raw.githubusercontent.com/php-actions/php-build/cee5b9fa9fbc4c888e7a62bbb7b8eade18e3c56b/php-build.bash) infection-phpunit
+        ${{ github.action_path }}/infection-phpunit-action.bash
       shell: bash
 
 branding:
